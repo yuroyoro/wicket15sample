@@ -13,7 +13,7 @@ import com.sun.syndication.feed.synd.SyndEnclosure
 import jp.javelindev.wicket._
 
 class RssImage(id:String) extends AjaxLink[java.lang.Void](id)
-  with ReactableConponent
+  with ReactableComponent
   with ImageSrcComponent
   with SelectableComponent
   with ImageRefreshReactor

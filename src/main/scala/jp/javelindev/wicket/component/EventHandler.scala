@@ -9,10 +9,10 @@ import org.apache.wicket.behavior.AttributeAppender
 import jp.javelindev.wicket.payload._
 
 trait EventReactor extends Component {
-  this: ReactableConponent =>
+  this: ReactableComponent =>
 }
 
-trait ReactableConponent extends Component {
+trait ReactableComponent extends Component {
   this: Component =>
 
   private val handlers = scala.collection.mutable.ArrayBuffer.empty[PartialFunction[Any, Unit]]
@@ -28,7 +28,7 @@ trait ReactableConponent extends Component {
 }
 
 trait ImageRefreshReactor extends EventReactor {
-  this: Component with ReactableConponent with ImageSrcComponent with SelectableComponent =>
+  this: Component with ReactableComponent with ImageSrcComponent with SelectableComponent =>
 
   handler{
     case event:ImageRefresh[_] =>
@@ -41,7 +41,7 @@ trait ImageRefreshReactor extends EventReactor {
 }
 
 trait RemoveReactor extends EventReactor {
-  this:Component with WebMarkupContainer with ReactableConponent =>
+  this:Component with WebMarkupContainer with ReactableComponent =>
 
   handler{
     case event:RemoveRequest => setVisibilityAllowed( !event.isRemove )
